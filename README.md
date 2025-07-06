@@ -80,7 +80,7 @@ outperforming both the SciPy and hybrid approaches in overall reliability.
 
 ## 📚 License
 
-This project is licensed under the terms of the [LICENSE](LICENSE) file.
+* This project is licensed under the terms of the [LICENSE](LICENSE) file.
 
 ## 🎓 Acknowledgements
 
