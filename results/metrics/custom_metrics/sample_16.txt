@@ -1,0 +1,2 @@
+# Sensitivity,Specificity,Time_Accuracy,MAE_Intensity
+0.720000,0.857143,0.175000,0.098885

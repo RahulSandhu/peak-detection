@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: peak-detection
+Version: 0.1.0
+Summary: Comparative analysis of SciPy, hybrid, and custom methods for peak detection.
+Author-email: Ravneet-Rahul Sandhu Singh <rahulsandhu542001@gmail.com>
+License-File: LICENSE
+Dynamic: license-file
