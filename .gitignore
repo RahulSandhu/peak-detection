@@ -1,5 +1,6 @@
 # Ignore files and folders
 presentation/**
+images/logos/
 
 # Re-allow only main.pdf
 !presentation/main.pdf
