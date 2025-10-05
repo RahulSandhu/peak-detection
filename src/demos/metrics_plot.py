@@ -1,16 +1,20 @@
 import os
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+
+# Fix for Wayland
+matplotlib.use("QtAgg")
 
 # Use custom style
 plt.style.use("../../config/matplotlib/mhedas.mplstyle")
 
 # Define directories and metrics
 metrics_dirs = {
-    "custom_metrics": "../data/metrics/custom_metrics/",
-    "scipy_metrics": "../data/metrics/scipy_metrics/",
-    "hybrid_metrics": "../data/metrics/hybrid_metrics/",
+    "custom_metrics": "../../results/metrics/custom_metrics/",
+    "scipy_metrics": "../../results/metrics/scipy_metrics/",
+    "hybrid_metrics": "../../results/metrics/hybrid_metrics/",
 }
 
 metrics_dicts = {
@@ -130,7 +134,7 @@ for i, metric in enumerate(
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../images/metrics_plot.png"
+output_path = "../../images/metrics-plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

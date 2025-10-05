@@ -1,16 +1,20 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+
+# Fix for Wayland
+matplotlib.use("QtAgg")
 
 # Use custom style
 plt.style.use("../../config/matplotlib/mhedas.mplstyle")
 
 # File paths
-raw_file_path = "../data/signals/raw/sample_01.txt"
-ground_truth_file_path = "../data/signals/ground_truth/sample_01.txt"
-smoothed_file_path = "../data/signals/custom_method/smoothed/sample_01.txt"
-baseline_corrected_file_path = "../data/signals/custom_method/baseline/sample_01.txt"
-filtered_file_path = "../data/signals/custom_method/filtered/sample_01.txt"
-custom_peaks_file_path = "../data/peaks/custom_peaks/sample_01.txt"
+raw_file_path = "../../data/raw/sample_01.txt"
+ground_truth_file_path = "../../data/ground_truth/sample_01.txt"
+smoothed_file_path = "../../data/custom_method/smoothed/sample_01.txt"
+baseline_corrected_file_path = "../../data/custom_method/baseline/sample_01.txt"
+filtered_file_path = "../../data/custom_method/filtered/sample_01.txt"
+custom_peaks_file_path = "../../results/peaks/custom_peaks/sample_01.txt"
 
 # Load raw signal data
 raw_data = np.loadtxt(raw_file_path, delimiter=",")
@@ -90,7 +94,7 @@ axes[1, 1].legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../images/custom_method_plot.png"
+output_path = "../../images/custom-method-plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

@@ -1,13 +1,17 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.signal import find_peaks
+
+# Fix for Wayland
+matplotlib.use("QtAgg")
 
 # Use custom style
 plt.style.use("../../config/matplotlib/mhedas.mplstyle")
 
 # File paths
-raw_file_path = "../data/signals/raw/sample_03.txt"
-ground_truth_file_path = "../data/signals/ground_truth/sample_03.txt"
+raw_file_path = "../../data/raw/sample_03.txt"
+ground_truth_file_path = "../../data/ground_truth/sample_03.txt"
 
 # Load raw signal data
 raw_data = np.loadtxt(raw_file_path, delimiter=",")
@@ -118,7 +122,7 @@ axes[1].legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../images/scipy_method_plot.png"
+output_path = "../../images/scipy-method-plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

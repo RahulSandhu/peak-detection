@@ -1,14 +1,18 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.io import loadmat
+
+# Fix for Wayland
+matplotlib.use("QtAgg")
 
 # Use custom style
 plt.style.use("../../config/matplotlib/mhedas.mplstyle")
 
 # File paths
-raw_path = "../data/signals/raw/sample_01.txt"
-ground_truth_path = "../data/signals/ground_truth/sample_01.txt"
-ref_peak_path = "../data/signals/ref_peak.mat"
+raw_path = "../../data/raw/sample_01.txt"
+ground_truth_path = "../../data/ground_truth/sample_01.txt"
+ref_peak_path = "../../data/ref_peak.mat"
 
 # Load raw signal data
 raw_data = np.loadtxt(raw_path, delimiter=",")
@@ -53,7 +57,7 @@ plt.legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../images/raw_signal_and_ref_peak_plot.png"
+output_path = "../../images/raw-signal-and-ref-peak-plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

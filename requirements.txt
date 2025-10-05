@@ -5,8 +5,7 @@ kiwisolver==1.4.9
 matplotlib==3.10.6
 numpy==2.3.3
 packaging==25.0
-## !! Could not determine repository location
--e /home/rahul/desktop/mhedas/1st_year/q1/biomedical_sensors_and_signal_processing/assessments/a02_peak_detection
+-e git+https://github.com/RahulSandhu/peak-detection@03ae200cc3bc682b2fe102eb0519c978aea7e7dc#egg=peak_detection
 pillow==11.3.0
 pyparsing==3.2.5
 PyQt5==5.15.11

@@ -11,21 +11,21 @@ from processing.scipy_method import scipy_method
 # 1. Load signals
 
 # Load MAT file and extract data
-data = loadmat("../data/signals/raw/data.mat")
+data = loadmat("../data/raw/data.mat")
 t = data["t"].squeeze()
 raw_sig = data["X"]
 gt_sig = data["GT"]
 
 # Load reference peak data
-ref_peak_data = loadmat("../data/signals/ref_peak.mat")
+ref_peak_data = loadmat("../data/ref_peak.mat")
 ref_peak = ref_peak_data["xref"].flatten()
 
 # Initialize storage dictionary
 signals = {}
 
 # Ensure output directories exist
-os.makedirs("../data/signals/raw/", exist_ok=True)
-os.makedirs("../data/signals/ground_truth/", exist_ok=True)
+os.makedirs("../data/raw", exist_ok=True)
+os.makedirs("../data/ground_truth", exist_ok=True)
 
 # Process and save signals
 for i, (raw, gt) in enumerate(zip(raw_sig, gt_sig), start=1):
@@ -37,8 +37,8 @@ for i, (raw, gt) in enumerate(zip(raw_sig, gt_sig), start=1):
     gt_data = np.column_stack((t, gt))
 
     # File paths
-    raw_path = f"../data/signals/raw/{name}.txt"
-    gt_path = f"../data/signals/ground_truth/{name}.txt"
+    raw_path = f"../data/raw/{name}.txt"
+    gt_path = f"../data/ground_truth/{name}.txt"
 
     # Save to files
     np.savetxt(raw_path, raw_data, delimiter=",", fmt="%.6f")
@@ -50,8 +50,8 @@ for i, (raw, gt) in enumerate(zip(raw_sig, gt_sig), start=1):
 # 2. SciPy method
 
 # Ensure output directories exist
-os.makedirs("../data/peaks/scipy_peaks/", exist_ok=True)
-os.makedirs("../data/metrics/scipy_metrics/", exist_ok=True)
+os.makedirs("../results/peaks/scipy_peaks/", exist_ok=True)
+os.makedirs("../results/metrics/scipy_metrics/", exist_ok=True)
 
 # Process each signal using scipy_peakdet
 for name, sig in signals.items():
@@ -64,14 +64,14 @@ for name, sig in signals.items():
     peak_t, peak_v = scipy_method(raw, t, gt, fs=10, win_dur=500, th1=0.25, th2=0.15)
 
     # Save peak data
-    peaks_path = f"../data/peaks/scipy_peaks/{name}.txt"
+    peaks_path = f"../results/peaks/scipy_peaks/{name}.txt"
     np.savetxt(peaks_path, np.column_stack((peak_t, peak_v)), delimiter=",", fmt="%.6f")
 
     # Compute and save metrics
     gt_t, gt_v = t[gt > 0], gt[gt > 0]
     met = metrics(gt_t, gt_v, peak_t, peak_v, tol=0.5)
     met_arr = np.array([list(met.values())])
-    met_path = f"../data/metrics/scipy_metrics/{name}.txt"
+    met_path = f"../results/metrics/scipy_metrics/{name}.txt"
     np.savetxt(
         met_path,
         met_arr,
@@ -83,10 +83,10 @@ for name, sig in signals.items():
 # 3. Hybrid method
 
 # Ensure output directories exist
-os.makedirs("../data/signals/hybrid_method/filtered/", exist_ok=True)
-os.makedirs("../data/signals/hybrid_method/convolved/", exist_ok=True)
+os.makedirs("../data/hybrid_method/filtered/", exist_ok=True)
+os.makedirs("../data/hybrid_method/convolved/", exist_ok=True)
 os.makedirs("../data/peaks/hybrid_peaks/", exist_ok=True)
-os.makedirs("../data/metrics/hybrid_metrics/", exist_ok=True)
+os.makedirs("../results/metrics/hybrid_metrics/", exist_ok=True)
 
 # Process each signal
 for name, sig in signals.items():
@@ -102,19 +102,19 @@ for name, sig in signals.items():
 
     # Save intermediate results
     np.savetxt(
-        f"../data/signals/hybrid_method/filtered/{name}.txt",
+        f"../data/hybrid_method/filtered/{name}.txt",
         np.column_stack((t, filtered_sig)),
         delimiter=",",
         fmt="%.6f",
     )
     np.savetxt(
-        f"../data/signals/hybrid_method/convolved/{name}.txt",
+        f"../data/hybrid_method/convolved/{name}.txt",
         conv_sig,
         delimiter=",",
         fmt="%.6f",
     )
     np.savetxt(
-        f"../data/peaks/hybrid_peaks/{name}.txt",
+        f"../results/peaks/hybrid_peaks/{name}.txt",
         np.column_stack((peak_t, peak_v)),
         delimiter=",",
         fmt="%.6f",
@@ -125,7 +125,7 @@ for name, sig in signals.items():
     hybrid_met = metrics(gt_t, gt_v, peak_t, peak_v, tol=0.5)
     hybrid_met_arr = np.array([list(hybrid_met.values())])
     np.savetxt(
-        f"../data/metrics/hybrid_metrics/{name}.txt",
+        f"../results/metrics/hybrid_metrics/{name}.txt",
         hybrid_met_arr,
         delimiter=",",
         fmt="%.6f",
@@ -135,11 +135,11 @@ for name, sig in signals.items():
 # 4. Custom method
 
 # Ensure output directories exist
-os.makedirs("../data/signals/custom_method/smoothed", exist_ok=True)
-os.makedirs("../data/signals/custom_method/baseline", exist_ok=True)
-os.makedirs("../data/signals/custom_method/filtered", exist_ok=True)
-os.makedirs("../data/peaks/custom_peaks", exist_ok=True)
-os.makedirs("../data/metrics/custom_metrics", exist_ok=True)
+os.makedirs("../data/custom_method/smoothed", exist_ok=True)
+os.makedirs("../data/custom_method/baseline", exist_ok=True)
+os.makedirs("../data/custom_method/filtered", exist_ok=True)
+os.makedirs("../results/peaks/custom_peaks", exist_ok=True)
+os.makedirs("../results/metrics/custom_metrics", exist_ok=True)
 
 # Process each signal
 for name, sig in signals.items():
@@ -155,25 +155,25 @@ for name, sig in signals.items():
 
     # Save intermediate results
     np.savetxt(
-        f"../data/signals/custom_method/smoothed/{name}.txt",
+        f"../data/custom_method/smoothed/{name}.txt",
         np.column_stack((t, smoothed_sig)),
         delimiter=",",
         fmt="%.6f",
     )
     np.savetxt(
-        f"../data/signals/custom_method/baseline/{name}.txt",
+        f"../data/custom_method/baseline/{name}.txt",
         np.column_stack((t, baseline_sig)),  # type: ignore[arg-type]
         delimiter=",",
         fmt="%.6f",
     )
     np.savetxt(
-        f"../data/signals/custom_method/filtered/{name}.txt",
+        f"../data/custom_method/filtered/{name}.txt",
         np.column_stack((t, filtered_sig)),
         delimiter=",",
         fmt="%.6f",
     )
     np.savetxt(
-        f"../data/peaks/custom_peaks/{name}.txt",
+        f"../results/peaks/custom_peaks/{name}.txt",
         np.column_stack((peak_t, peak_v)),
         delimiter=",",
         fmt="%.6f",
@@ -184,7 +184,7 @@ for name, sig in signals.items():
     custom_met = metrics(gt_t, gt_v, peak_t, peak_v, tol=0.5)
     custom_met_arr = np.array([list(custom_met.values())])
     np.savetxt(
-        f"../data/metrics/custom_metrics/{name}.txt",
+        f"../results/metrics/custom_metrics/{name}.txt",
         custom_met_arr,
         delimiter=",",
         fmt="%.6f",
