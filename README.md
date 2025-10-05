@@ -1,3 +1,5 @@
+<div align="justify">
+
 # Peak Detection in Synthetic Noisy Signals
 
 This repository contains a complete workflow for evaluating and comparing
