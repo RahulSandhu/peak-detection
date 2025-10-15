@@ -105,7 +105,7 @@ ax4.legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/hybrid-method-plot.png"
+output_path = "../../images/hybrid_method_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

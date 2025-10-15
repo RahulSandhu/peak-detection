@@ -57,7 +57,7 @@ plt.legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/raw-signal-and-ref-peak-plot.png"
+output_path = "../../images/raw_signal_and_ref_peak_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

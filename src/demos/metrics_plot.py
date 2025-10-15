@@ -134,7 +134,7 @@ for i, metric in enumerate(
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/metrics-plot.png"
+output_path = "../../images/metrics_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot
