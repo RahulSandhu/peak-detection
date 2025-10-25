@@ -51,7 +51,7 @@ and a fully custom method.
 **custom method** showed the most consistent results across all metrics,
 outperforming both the SciPy and hybrid approaches in overall reliability.
 
-## 🎓 Acknowledgements
+## 🎓 Acknowledgments
 
 * Developed as part of the Health Data Science Master’s program at Universitat
 Rovira i Virgili (URV)
