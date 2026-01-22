@@ -13,7 +13,6 @@ matplotlib-inline==0.1.7
 numpy==2.3.3
 packaging==25.0
 parso==0.8.5
--e git+https://github.com/RahulSandhu/peak-detection@03ae200cc3bc682b2fe102eb0519c978aea7e7dc#egg=peak_detection
 pexpect==4.9.0
 pillow==11.3.0
 prompt_toolkit==3.0.52

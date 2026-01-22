@@ -8,13 +8,13 @@ import numpy as np
 matplotlib.use("QtAgg")
 
 # Use custom style
-plt.style.use("../../config/matplotlib/mhedas.mplstyle")
+plt.style.use("../../config/matplotlib/stylelib/mhedas.mplstyle")
 
 # Define directories and metrics
 metrics_dirs = {
-    "custom_metrics": "../../results/metrics/custom_metrics/",
-    "scipy_metrics": "../../results/metrics/scipy_metrics/",
-    "hybrid_metrics": "../../results/metrics/hybrid_metrics/",
+    "custom_metrics": "../../results/tables/metrics/custom_metrics/",
+    "scipy_metrics": "../../results/tables/metrics/scipy_metrics/",
+    "hybrid_metrics": "../../results/tables/metrics/hybrid_metrics/",
 }
 
 metrics_dicts = {
@@ -134,7 +134,7 @@ for i, metric in enumerate(
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/metrics_plot.png"
+output_path = "../../results/figures/metrics_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

@@ -50,8 +50,8 @@ for i, (raw, gt) in enumerate(zip(raw_sig, gt_sig), start=1):
 # 2. SciPy method
 
 # Ensure output directories exist
-os.makedirs("../results/peaks/scipy_peaks/", exist_ok=True)
-os.makedirs("../results/metrics/scipy_metrics/", exist_ok=True)
+os.makedirs("../results/tables/peaks/scipy_peaks/", exist_ok=True)
+os.makedirs("../results/tables/metrics/scipy_metrics/", exist_ok=True)
 
 # Process each signal using scipy_peakdet
 for name, sig in signals.items():
@@ -64,14 +64,14 @@ for name, sig in signals.items():
     peak_t, peak_v = scipy_method(raw, t, gt, fs=10, win_dur=500, th1=0.25, th2=0.15)
 
     # Save peak data
-    peaks_path = f"../results/peaks/scipy_peaks/{name}.txt"
+    peaks_path = f"../results/tables/peaks/scipy_peaks/{name}.txt"
     np.savetxt(peaks_path, np.column_stack((peak_t, peak_v)), delimiter=",", fmt="%.6f")
 
     # Compute and save metrics
     gt_t, gt_v = t[gt > 0], gt[gt > 0]
     met = metrics(gt_t, gt_v, peak_t, peak_v, tol=0.5)
     met_arr = np.array([list(met.values())])
-    met_path = f"../results/metrics/scipy_metrics/{name}.txt"
+    met_path = f"../results/tables/metrics/scipy_metrics/{name}.txt"
     np.savetxt(
         met_path,
         met_arr,
@@ -125,7 +125,7 @@ for name, sig in signals.items():
     hybrid_met = metrics(gt_t, gt_v, peak_t, peak_v, tol=0.5)
     hybrid_met_arr = np.array([list(hybrid_met.values())])
     np.savetxt(
-        f"../results/metrics/hybrid_metrics/{name}.txt",
+        f"../results/tables/metrics/hybrid_metrics/{name}.txt",
         hybrid_met_arr,
         delimiter=",",
         fmt="%.6f",
@@ -138,8 +138,8 @@ for name, sig in signals.items():
 os.makedirs("../data/custom_method/smoothed", exist_ok=True)
 os.makedirs("../data/custom_method/baseline", exist_ok=True)
 os.makedirs("../data/custom_method/filtered", exist_ok=True)
-os.makedirs("../results/peaks/custom_peaks", exist_ok=True)
-os.makedirs("../results/metrics/custom_metrics", exist_ok=True)
+os.makedirs("../results/tables/peaks/custom_peaks", exist_ok=True)
+os.makedirs("../results/tables/metrics/custom_metrics", exist_ok=True)
 
 # Process each signal
 for name, sig in signals.items():
@@ -173,7 +173,7 @@ for name, sig in signals.items():
         fmt="%.6f",
     )
     np.savetxt(
-        f"../results/peaks/custom_peaks/{name}.txt",
+        f"../results/tables/peaks/custom_peaks/{name}.txt",
         np.column_stack((peak_t, peak_v)),
         delimiter=",",
         fmt="%.6f",
@@ -184,7 +184,7 @@ for name, sig in signals.items():
     custom_met = metrics(gt_t, gt_v, peak_t, peak_v, tol=0.5)
     custom_met_arr = np.array([list(custom_met.values())])
     np.savetxt(
-        f"../results/metrics/custom_metrics/{name}.txt",
+        f"../results/tables/metrics/custom_metrics/{name}.txt",
         custom_met_arr,
         delimiter=",",
         fmt="%.6f",

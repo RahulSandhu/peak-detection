@@ -7,7 +7,7 @@ from scipy.signal import find_peaks
 matplotlib.use("QtAgg")
 
 # Use custom style
-plt.style.use("../../config/matplotlib/mhedas.mplstyle")
+plt.style.use("../../config/matplotlib/stylelib/mhedas.mplstyle")
 
 # File paths
 raw_file_path = "../../data/raw/sample_03.txt"
@@ -122,7 +122,7 @@ axes[1].legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/scipy_method_plot.png"
+output_path = "../../results/figures/scipy_method_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

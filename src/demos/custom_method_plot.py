@@ -6,7 +6,7 @@ import numpy as np
 matplotlib.use("QtAgg")
 
 # Use custom style
-plt.style.use("../../config/matplotlib/mhedas.mplstyle")
+plt.style.use("../../config/matplotlib/stylelib/mhedas.mplstyle")
 
 # File paths
 raw_file_path = "../../data/raw/sample_01.txt"
@@ -14,7 +14,7 @@ ground_truth_file_path = "../../data/ground_truth/sample_01.txt"
 smoothed_file_path = "../../data/custom_method/smoothed/sample_01.txt"
 baseline_corrected_file_path = "../../data/custom_method/baseline/sample_01.txt"
 filtered_file_path = "../../data/custom_method/filtered/sample_01.txt"
-custom_peaks_file_path = "../../results/peaks/custom_peaks/sample_01.txt"
+custom_peaks_file_path = "../../results/tables/peaks/custom_peaks/sample_01.txt"
 
 # Load raw signal data
 raw_data = np.loadtxt(raw_file_path, delimiter=",")
@@ -94,7 +94,7 @@ axes[1, 1].legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/custom_method_plot.png"
+output_path = "../../results/figures/custom_method_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

@@ -6,14 +6,14 @@ import numpy as np
 matplotlib.use("QtAgg")
 
 # Use custom style
-plt.style.use("../../config/matplotlib/mhedas.mplstyle")
+plt.style.use("../../config/matplotlib/stylelib/mhedas.mplstyle")
 
 # File paths
 raw_file_path = "../../data/raw/sample_01.txt"
 ground_truth_file_path = "../../data/ground_truth/sample_01.txt"
 filtered_file_path = "../../data/hybrid_method/filtered/sample_01.txt"
 convolved_file_path = "../../data/hybrid_method/convolved/sample_01.txt"
-hybrid_peaks_file_path = "../../results/peaks/hybrid_peaks/sample_01.txt"
+hybrid_peaks_file_path = "../../results/tables/peaks/hybrid_peaks/sample_01.txt"
 
 
 # Load raw signal data
@@ -105,7 +105,7 @@ ax4.legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/hybrid_method_plot.png"
+output_path = "../../results/figures/hybrid_method_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot

@@ -7,7 +7,7 @@ from scipy.io import loadmat
 matplotlib.use("QtAgg")
 
 # Use custom style
-plt.style.use("../../config/matplotlib/mhedas.mplstyle")
+plt.style.use("../../config/matplotlib/stylelib/mhedas.mplstyle")
 
 # File paths
 raw_path = "../../data/raw/sample_01.txt"
@@ -57,7 +57,7 @@ plt.legend()
 plt.tight_layout()
 
 # Save the plot as a PNG file
-output_path = "../../images/raw_signal_and_ref_peak_plot.png"
+output_path = "../../results/figures/raw_signal_and_ref_peak_plot.png"
 plt.savefig(output_path, dpi=300)
 
 # Display the plot
