@@ -53,7 +53,7 @@ available in:
 
 ## 🎓 Acknowledgments
 
-- Developed as part of the Biomedical Sensors and Signal Processing course of
-  the Master in Health Data Science at Universitat Rovira i Virgili (URV)
+- Developed as part of the Biomedical Sensors and Signal Processing course in
+  the Master in Health Data Science program at Universitat Rovira i Virgili (URV)
 
 </div>
